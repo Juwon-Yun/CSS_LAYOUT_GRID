@@ -1,0 +1,124 @@
+.grid{
+    /* background: gray; */
+    color: blanchedalmond;
+
+    display: grid;
+
+    gap: 5px;
+    /* 
+    중요) 1fr(fraction)은 
+    navigator에서 얻는게 아니라 grid container에서 얻는것임
+     */
+    
+    width: 500px;
+
+    /* grid-template-columns: repeat(4, 100px); */
+    /* grid-template-columns: [first-line] 100px [second-line] 100px [third-ling] 100px [fourth-line] 100px [fifth-line] 100px; */
+    /* grid-template-rows: repeat(4, 100px [sexy-line]); */
+    /* grid-template-columns: repeat(4, 1fr); */
+    /* grid-template-rows: repeat(4, 1fr); */
+
+    /* grid-template-columns: repeat(4, 1fr); */
+    /* grid-template-rows: repeat(4, 1fr); */
+    
+    grid-template-columns: repeat(10, minmax(100px, 150px));
+    grid-template-rows: repeat(4, 100px);
+    grid-auto-columns: 100px;
+    /* 
+    grid-template-rows: repeat(4, 100px) 의 모자란 row들을
+    자동으로 채운다
+    grid-auto-rows: 100px;
+     */
+    grid-auto-flow: row;
+    grid-auto-columns: 100px;
+
+
+    /* justify-content: space-between; */
+    /* align-content: space-evenly; */
+
+    /* place-content: end center; */
+
+    /* 컬럼은 늘어나있지만 item들은 늘어나지않는경우다 */
+    /* justify-items: center; */
+    /* align-items: center;     */
+
+    /* grid-template: 
+    row row row row rows-tall(heght)
+    "header header header header" 1fr  
+    "content content content nav" 2fr  
+    "footer footer footer footer"1fr  / 1fr 1fr 1fr 1fr;
+    ; */
+    /* grid-template: 
+    [header-start]"header header header header" 1fr [header-end] 
+    [content-start]"content content content nav" 2fr [content-end] 
+    [footer-start]"footer footer footer footer"1fr [footer-end]  / 1fr 1fr 1fr 1fr;
+    ; */
+    /* grid-template 에서는 repeat가 안됨 */
+
+    /* grid-template-areas: 
+    "header header header header"
+    "content content content nav"
+    "content content content nav"
+    "footer footer footer footer"
+    ; */
+
+}
+
+.header{
+    background-color: green; 
+    /* grid-area: header; */
+    /* grid-column: first-line / fifth-line; */
+
+    /* align-self: end;
+    justify-self: center; */
+    /* place-self: end center; */
+}
+
+
+.content{
+    background-color: skyblue;
+    /* grid-area: content; */
+    /* grid-column: 1/-2; */
+    /* grid-column: first-line / fourth-line; */
+    /* grid-row: sexy-line 1 / sexy-line 3; */
+}
+
+
+.nav{
+    background-color: slateblue;
+    /* grid-area: nav; */
+    /* grid-row: 2/4; */
+    /* grid-row: span 2; */
+    /* grid-row: 2/4; */
+}
+
+.footer{
+    background-color: peru;
+    /* grid-area: footer; */
+
+    /* grid-column: 1/5;  -1은 end를 의미 */
+    /* grid-column: 1/-1; */
+    /* span은 수직, 수평 둘다 의미할 수 있다 */
+    /* grid-column: span 4; */
+}
+
+.item:nth-child(odd){
+    background-color: #2ecc71;
+}
+
+.item:nth-child(even){
+    background-color: skyblue;
+}
+
+
+/* 반응형 디자인 
+    auto-fill, auto-fit
+    min-content, max-content
+*/
+.grid:first-child{
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}
+
+.grid:last-child{
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}

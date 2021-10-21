@@ -1,0 +1,79 @@
+.father{
+    /* 바로 붙어있는 부모가 flex이어야 자식이 적용된다 */
+    display: flex;
+    /* position 속성중 하나인 
+    justify-content는 수평축(main axis)에 있는 flex children의 위치를 변경한다 
+    기본방향은 row이고 main axis는 가로 이다 
+    */
+    /* flex-direction: column에서는 main axis가 수직, cross axiss가 수평 */
+    flex-direction: row;
+    /* Main Axis */
+    justify-content: space-around;
+    
+    /* felx-wrap: wrap의 줄 나눔 조절 */
+    align-content: space-around;
+
+    /* (align-item => cross axis는 세로이다) 높이(vartical)를 늘리면 알 수 있음 */
+    /* Cross Axis */
+    align-items: flex-end;
+    height: 200vh;
+    /* flex container의 flex-direct ion 기본값은 row(가로, 수평)이다  */
+
+    /* flex-wrap: wrap; => width를 존중해라*/
+    flex-wrap: nowrap;
+}
+
+.child{
+    /* flexbox는 width를 신경쓰지않고 우겨넣는다 */
+    /* width: 300px; */
+
+    /* 
+    width와 같은 역할을 하지만 elment에게 처음 크기를 준다
+    (늘어나거나 찌그러지기 전에)
+    flex-direction : row면 basis는 width
+    flex-direction : column면 basis는 height
+     */
+    flex-basis: 30%;
+
+    height: 200px;
+    background: orange;
+    color: white;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.child:nth-child(1){
+    /* 2번째 child만 cross axis방향에 있는 item의 위치를 바꾼다 */
+    /* align-self: center; */
+
+    /* box의 order default는 0이다 
+        HTML을 바꾸지않고 순서르 바꿀때 사용
+    */
+    /* order: 2; */
+
+    /* align-items 와 같다 */
+    /* align-self: center;  */
+}
+
+.child:nth-child(2){
+    background: #000;
+    /* flex-shrink: 1; 가 default */
+    /* 2번째 child가 다른 child에 비해 2배 더 찌그러짐 */
+    /* flex-shrink: 2; */
+
+    /* flex-grow: 0; 가 default */
+    /* child중에 자리가 있으면 flex-grow의 값만큼 자리를 더 가진다 */
+    /* box 주변의 공간을 갖는다 */
+    flex-grow: 1;
+    
+    /* align-self: flex-end; */
+    
+    /* order: 3; */
+}
+
+.child:nth-child(3){
+    /* flex-shrink: 2; */
+    flex-grow: 0;
+}
